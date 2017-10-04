@@ -5,7 +5,15 @@ public class Parcheggio {
 	private int costo_posto;
 	private int n_posti_occupati;
 	private String strerrore;
-	
+
+	public Parcheggio(int n_ingressi,int n_posti,int costo_posto,int n_posti_occupati,String strerrore){
+		this.setN_ingressi(n_ingressi);
+		this.setN_posti(n_posti);
+		this.setCosto_posto(costo_posto);
+		this.setN_posti_occupati(n_posti_occupati);
+		this.setStrerrore(strerrore);
+	}
+
 	public int getN_ingressi() {
 		return n_ingressi;
 	}
@@ -71,23 +79,21 @@ public class Parcheggio {
 		int valLor=0;
 		valLor=valLor+incasso()+valoreParcheggio();
 		return valLor;
-		
+
 	}
 	public int valoreParcheggio(){
 		int val=0;
 		val=val+(n_posti_occupati*costo_posto);
 		return val;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
 }
-
-
