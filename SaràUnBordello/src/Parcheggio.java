@@ -4,16 +4,18 @@ public class Parcheggio {
 	private int n_posti;
 	private int costo_posto;
 	private int n_posti_occupati;
-	private String strerrore;
-
-	public Parcheggio(int n_ingressi,int n_posti,int costo_posto,int n_posti_occupati,String strerrore){
+	
+	
+	//Metodo Costruttore
+	public Parcheggio(int n_ingressi,int n_posti,int costo_posto,int n_posti_occupati){
 		this.setN_ingressi(n_ingressi);
 		this.setN_posti(n_posti);
 		this.setCosto_posto(costo_posto);
 		this.setN_posti_occupati(n_posti_occupati);
-		this.setStrerrore(strerrore);
 	}
-
+	
+	
+	//Getters and Setters
 	public int getN_ingressi() {
 		return n_ingressi;
 	}
@@ -38,17 +40,11 @@ public class Parcheggio {
 	public void setN_posti_occupati(int n_posti_occupati) {
 		this.n_posti_occupati = n_posti_occupati;
 	}
-	public String getStrerrore() {
-		return strerrore;
-	}
-	public void setStrerrore(String strerrore) {
-		this.strerrore = strerrore;
-	}
+	//Funzioni
 	public boolean ingresso(){
-		n_posti_occupati++;
-		n_ingressi++;
-		if(this.n_posti_occupati-this.n_posti==0){
-			setStrerrore(this.strerrore);
+		this.n_posti_occupati++;
+		this.n_ingressi++;
+		if(this.getN_posti_occupati()-this.getN_posti()==0){
 			return false;
 		}
 		else{
@@ -56,18 +52,17 @@ public class Parcheggio {
 		}
 	}
 	public boolean uscita(){
-		if (n_posti_occupati==0){
-			setStrerrore(this.strerrore);
+		if (this.getN_posti_occupati()==0){
 			return false;
 		}
 		else{
-			n_posti_occupati--;
+			this.n_posti_occupati--;
 			return true;
 		}
 	}
 	public int postiLiberi(){
-		int postiLib;
-		postiLib = n_posti-n_posti_occupati;
+		int postiLib=0;
+		postiLib = this.n_posti-this.n_posti_occupati;
 		return postiLib;
 	}
 	public int incasso(){
@@ -75,17 +70,18 @@ public class Parcheggio {
 		soldi=soldi+valoreParcheggio();
 		return soldi;
 	}
+	public int valoreParcheggio(){
+		int val=0;
+		val=val+(this.getN_posti_occupati()*this.getCosto_posto());
+		return val;
+	}
 	public int valoreLordo(){
 		int valLor=0;
 		valLor=valLor+incasso()+valoreParcheggio();
 		return valLor;
 
 	}
-	public int valoreParcheggio(){
-		int val=0;
-		val=val+(n_posti_occupati*costo_posto);
-		return val;
-	}
+
 
 
 
